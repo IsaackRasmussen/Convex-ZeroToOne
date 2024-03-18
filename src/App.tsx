@@ -64,7 +64,7 @@ function CreateTeamCard() {
   const [isNewTeamNameValid, setIsNewTeamNameValid] = useState(true);
 
   return (
-    <Card title="Collab team">
+    <Card title="Team">
       <p className="m-0">
         If you don't have one already, you can now create a group email to start collaborating.
       </p>
