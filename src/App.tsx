@@ -11,7 +11,7 @@ import { Card } from 'primereact/card';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Dropdown } from 'primereact/dropdown';
 import { Message } from 'primereact/message';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 import MessagesMailView from "./MessagesMailView";
 import TeamsView from "./TeamsView"

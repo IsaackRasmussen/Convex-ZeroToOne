@@ -22,6 +22,5 @@ function getTreeNodes(teams: any[], parentId: null | undefined): any[] {
             expanded: true,
             children: getTreeNodes(teams, team._id)
         };
-        //children: getTreeNodes(teams, team._id)
     }) ?? [];
 }
