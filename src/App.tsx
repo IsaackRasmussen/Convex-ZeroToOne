@@ -1,60 +1,35 @@
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { useEffect, useState } from "react";
+import { TabView, TabPanel } from 'primereact/tabview';
+import { Button } from 'primereact/button';
+import MessagesMailView from "./MessagesMailView";
 
 export default function App() {
-  /*  const messages = useQuery(api.messages.list);
-    const sendMessage = useMutation(api.messages.send);
-  
-    const [newMessageText, setNewMessageText] = useState("");
-  
-    useEffect(() => {
-      // Make sure scrollTo works on button click in Chrome
-      setTimeout(() => {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-      }, 0);
-    }, [messages]);
-  
-    return (
-      <main className="chat">
-        <header>
-          <h1>Convex Chat</h1>
-          <p>
-            Connected as <strong>{NAME}</strong>
-          </p>
-        </header>
-        {messages?.map((message) => (
-          <article
-            key={message._id}
-            className={message.author === NAME ? "message-mine" : ""}
-          >
-            <div>{message.author}</div>
-  
-            <p>{message.body}</p>
-          </article>
-        ))}
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            await sendMessage({ body: newMessageText, author: NAME });
-            setNewMessageText("");
-          }}
-        >
-          <input
-            value={newMessageText}
-            onChange={async (e) => {
-              const text = e.target.value;
-              setNewMessageText(text);
-            }}
-            placeholder="Write a message…"
-          />
-          <button type="submit" disabled={!newMessageText}>
-            Send
-          </button>
-        </form>
-      </main>
-    );*/
   return (
-    <div>Test is ready</div>);
-
+    <div className="border-1 surface-border gap-2 ">
+      <TabView className="content">
+        <TabPanel header="Welcome">
+          <p>
+            Sign up with a Decentralized Id
+          </p>
+          <p className="m-0">
+            Do you already have a login?
+          </p>
+          <Button label="Go to Sign-in"  />
+        </TabPanel>
+        <TabPanel header="Sign-in">
+          <p className="m-0">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
+            enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
+            ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+          </p>
+        </TabPanel>
+        <TabPanel header="E-mails">
+          <MessagesMailView></MessagesMailView>
+        </TabPanel>
+      </TabView>
+    </div>
+  );
 }
