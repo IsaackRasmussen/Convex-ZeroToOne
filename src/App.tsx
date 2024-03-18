@@ -55,6 +55,6 @@ export default function App() {
       </main>
     );*/
   return (
-    <div></div>);
+    <div>Test is ready</div>);
 
 }
