@@ -19,15 +19,13 @@ export const emailAdd = mutation({
     rawMessage: v.string()
   },
   handler: async (ctx, args) => {
-    // Get user
-    const usersIdentityId = (await ctx.db.query("users_identity")
-      .filter((q) => q.eq(q.field("identifier"), args.emailTo))
-      .filter((q) => q.eq(q.field("type"), "email"))
+    // Get team
+    const teamId = (await ctx.db.query("teams")
+      .filter((q) => q.eq(q.field("teamName"), args.emailTo))
       .first())?._id;
 
     // Add a new message.
-    if (usersIdentityId) {
-      //const simpleParser = require('mailparser').simpleParser;
+    if (teamId) {
       const {
         attachments, // [{ contentType: 'image/gif', fileName: 'smile.gif', content: Uint8Array[71, 73, 70..], ... }]
         body, 
@@ -40,7 +38,7 @@ export const emailAdd = mutation({
 
       await ctx.db.insert("messages_email", {
         body: body?.html ?? body?.text ?? undefined,
-        usersIdentityId: usersIdentityId,
+        teamId,
         attachmentUris: [],
         cc: "",
         dateReceived: new Date().toISOString(),
@@ -53,7 +51,7 @@ export const emailAdd = mutation({
       });
     } else {
       throw new ConvexError({
-        message: "User doesn't exist",
+        message: "Team doesn't exist",
         code: 404,
         severity: "high",
       });

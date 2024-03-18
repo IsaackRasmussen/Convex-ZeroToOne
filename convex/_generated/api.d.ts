@@ -16,7 +16,7 @@ import type {
 } from "convex/server";
 import type * as init from "../init.js";
 import type * as messages_email from "../messages_email.js";
-import type * as users from "../users.js";
+import type * as teams from "../teams.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -29,7 +29,7 @@ import type * as users from "../users.js";
 declare const fullApi: ApiFromModules<{
   init: typeof init;
   messages_email: typeof messages_email;
-  users: typeof users;
+  teams: typeof teams;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

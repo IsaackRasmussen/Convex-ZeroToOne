@@ -13,15 +13,11 @@ export default defineSchema({
     rawMessage: v.string(),
     subject: v.string(),
     to: v.string(),
-    usersIdentityId: v.string(),
+    teamId: v.string(),
   }),
-  users: defineTable({ did: v.string() }),
-  users_identity: defineTable({
-    firstName: v.string(),
-    identifier: v.string(),
-    lastName: v.string(),
-    middleName: v.string(),
-    type: v.string(),
-    usersId: v.string(),
+  teams: defineTable({
+    teamName: v.string(),
+    teamOwner: v.string(),
+    parentId: v.optional(v.string()),
   }),
 });

@@ -7,18 +7,16 @@ import { Column } from 'primereact/column';
 export default function MessagesMailView() {
     const emailMessages = useQuery(api.messages_email.list, { user: "isaack@pikutu.com" });
 
-    console.log('Loading: ', emailMessages);
-    emailMessages?.map((message) => {
-        console.log('Email: ', message);
-    });
-
     return (
-        <DataTable value={emailMessages} paginator showGridlines rows={10} loading={false} dataKey="id"
+        <DataTable value={emailMessages} paginator showGridlines rows={10} loading={emailMessages === undefined || emailMessages === null}
+            dataKey="_id"
             //filters={filters} 
             globalFilterFields={['name', 'country.name', 'representative.name', 'balance', 'status']}
             //header={header}
             emptyMessage="No mails found.">
-            <Column field="emailFrom" header="From" filter filterPlaceholder="Search by name" style={{ minWidth: '12rem' }} />
+            <Column field="from" header="From" filter filterPlaceholder="Search by sender" />
+            <Column field="subject" header="Subject" filter filterPlaceholder="Search by subject" style={{ minWidth: '12rem' }} />
+            <Column field="dateReceived" header="Date" filter filterPlaceholder="Search by date" />
 
         </DataTable>
     );
