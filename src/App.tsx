@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { api } from "../convex/_generated/api";
 import { TabView, TabPanel } from 'primereact/tabview';
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/InputText';
+import { InputText } from 'primereact/inputtext';
 import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import { SignInButton } from "@clerk/clerk-react";
 import { useUser } from "@clerk/clerk-react";
