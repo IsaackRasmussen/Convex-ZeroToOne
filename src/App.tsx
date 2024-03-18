@@ -23,7 +23,6 @@ export default function App() {
         <TabView className="content">
           <TabPanel header="Welcome" className="flex">
             <CreateTeamCard />
-
           </TabPanel>
           <TabPanel header="Teams">
             <TeamsView></TeamsView>
@@ -57,7 +56,7 @@ export default function App() {
 
 function CreateTeamCard() {
   const addTeam = useMutation(api.teams.addTeam);
-  const listTeams = useQuery(api.teams.listTeams, { parentId: undefined });
+  const listTeams = useQuery(api.teams.listTeams, { parentId: undefined }) || [];
   const { user } = useUser();
 
   const [newTeamName, setNewTeamName] = useState("");
@@ -69,7 +68,7 @@ function CreateTeamCard() {
       <p className="m-0">
         If you don't have one already, you can now create a group email to start collaborating.
       </p>
-      <p>Note. your email address will not be saved but your name will be saved for the chart</p>
+      <p>Note. your email address will not be saved but your name will be saved for the chart. All data will be deleted after the hackaton</p>
       <p>Enter a team name and it will be created as team-name@kaka-dou.com</p>
       <div className="p-inputgroup flex-1">
         <Dropdown value={selectedTeamId} onChange={(e) => setSelectedTeamId(e.value)} options={listTeams} optionLabel="teamName" optionValue="_id"
@@ -83,7 +82,7 @@ function CreateTeamCard() {
         <Button label="Create" onClick={async (e) => {
           e.preventDefault();
           await addTeam({
-            teamOwner: user?.firstName?? "Kaka-Dou",
+            teamOwner: user?.firstName ?? "Kaka-Dou",
             teamName: newTeamName,
             parentId: selectedTeamId
           })

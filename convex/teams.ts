@@ -23,7 +23,6 @@ export const listTeams = query({
     parentId: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-
     let teamsTree: any = [];
     if (args.parentId) {
       teamsTree = await ctx.db.query("teams")

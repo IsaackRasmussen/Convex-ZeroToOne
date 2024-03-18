@@ -3,7 +3,7 @@ import { v, ConvexError } from "convex/values";
 import { parseMail } from '@protontech/jsmimeparser';
 
 export const list = query({
-  args: { user: v.string() },
+  args: {},
   handler: async (ctx) => {
     // Grab the most recent messages.
     const messages = await ctx.db.query("messages_email").order("desc").take(100);
@@ -28,10 +28,10 @@ export const emailAdd = mutation({
     if (teamId) {
       const {
         attachments, // [{ contentType: 'image/gif', fileName: 'smile.gif', content: Uint8Array[71, 73, 70..], ... }]
-        body, 
-        subject, 
-        from, 
-        to, 
+        body,
+        subject,
+        from,
+        to,
         date, // Date('Wed, 20 Aug 2003 16:02:43 -0500')
         //        ...rest // headers and more
       } = parseMail(args.rawMessage);
@@ -51,7 +51,7 @@ export const emailAdd = mutation({
       });
     } else {
       throw new ConvexError({
-        message: "Team doesn't exist",
+        message: "Team doesn't exist: " + args.emailTo,
         code: 404,
         severity: "high",
       });

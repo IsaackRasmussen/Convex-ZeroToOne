@@ -5,7 +5,7 @@ import { Column } from 'primereact/column';
 
 
 export default function MessagesMailView() {
-    const emailMessages = useQuery(api.messages_email.list, { user: "isaack@pikutu.com" });
+    const emailMessages = useQuery(api.messages_email.list, {})|| [];
 
     return (
         <DataTable value={emailMessages} paginator showGridlines rows={10} loading={emailMessages === undefined || emailMessages === null}
