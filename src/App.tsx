@@ -83,7 +83,7 @@ function CreateTeamCard() {
         <Button label="Create" onClick={async (e) => {
           e.preventDefault();
           await addTeam({
-            teamOwner: user?.primaryEmailAddress?.emailAddress ?? "isaack",
+            teamOwner: user?.firstName?? "Kaka-Dou",
             teamName: newTeamName,
             parentId: selectedTeamId
           })

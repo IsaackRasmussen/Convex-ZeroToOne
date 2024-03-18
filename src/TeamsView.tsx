@@ -8,11 +8,11 @@ export default function TeamsView() {
     const teamsList = useQuery(api.teams.listTeams, {});
 
     return (
-        <OrganizationChart value={getTreeNodes(teamsList, undefined)} />
+        <OrganizationChart value={getTreeNodes(teamsList, "root")} />
     );
 }
 
-function getTreeNodes(teams: any[], parentId: null | undefined): any[] {
+function getTreeNodes(teams: any[], parentId: string | undefined): any[] {
     const filteredTeams = teams.filter((team) => team.parentId === parentId) ?? [];
 
     return filteredTeams.map(team => {
