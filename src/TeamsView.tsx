@@ -13,7 +13,7 @@ export default function TeamsView() {
 }
 
 function getTreeNodes(teams: any[], parentId: null | undefined): any[] {
-    const filteredTeams = teams.filter((team) => team.parentId === parentId);
+    const filteredTeams = teams.filter((team) => team.parentId === parentId) ?? [];
 
     return filteredTeams.map(team => {
         return {
